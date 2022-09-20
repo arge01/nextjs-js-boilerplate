@@ -10,14 +10,20 @@
     "export": "next export",
     "format": "yarn lint --fix",
     "format:no-path": "yarn lint:no-path --fix",
-    "lint": "eslint .",
+    "lint": "eslint --ext .js,.jsx src",
     "lint:no-path": "eslint",
     "start": "next start -p ${PORT:=3000}",
     "prepare": "husky install"
   },
   "lint-staged": {
-    "**/*.js": "yarn format:no-path",
-    "**/*.scss": "yarn prettier --write"
+    "*.{js,jsx}": [
+      "eslint --no-ignore --fix"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "dependencies": {
     "@apollo/client": "^3.6.9",

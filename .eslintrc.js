@@ -25,10 +25,23 @@ module.exports = {
   },
   plugins: ['react'],
   rules: {
+    'no-console': [
+      'error',
+      {
+        allow: ['warn', 'error', 'info'],
+      },
+    ],
     'react-hooks/rules-of-hooks': 'error',
+    'no-unused-vars': 'error',
     'react-hooks/exhaustive-deps': 'warn',
     'react/prop-types': 'off',
     'react/react-in-jsx-scope': 'off',
     '@next/next/no-img-element': 'off',
+    'import/prefer-default-export': 'off',
+    'react/jsx-props-no-spreading': 'off',
+    'react/display-name': 'off',
+    'import/no-anonymous-default-export': 'off',
+    'react/no-unescaped-entities': 'off',
+    'react/no-children-prop': 'off',
   },
 };
