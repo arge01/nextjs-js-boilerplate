@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const rest_url = 'https://jsonplaceholder.typicode.com';
+const rest_url = `${process.env.NEXT_PUBLIC_HOST_NAME}`;
 
 const fetchConfig = (method, url, data, prep) => {
   const config = {

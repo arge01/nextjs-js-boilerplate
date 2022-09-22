@@ -11,8 +11,9 @@ function Home() {
           Arif GEVENCİ
         </span>
         <Link href="test">
-          <a className="d-flex w-100 font-weight-bold text-dark align-items-center p-3 justify-content-center text-decoration-underline">
-            {`{redux}`} test
+          <a className="d-flex w-100 font-weight-bold text-dark align-items-center p-3 justify-content-center">
+            <i className="fas fa-arrow-right"></i> {`{redux} test`}{' '}
+            <i className="fas fa-arrow-left"></i>
           </a>
         </Link>
       </p>
