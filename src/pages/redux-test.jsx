@@ -1,6 +1,6 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import Layout from 'component/Layout';
 import React, { useEffect } from 'react';
+
+import Layout from 'component/Layout';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { findAll } from 'services/json-placeholder';
@@ -11,7 +11,7 @@ function ReduxTest() {
 
   useEffect(() => {
     dispatch(findAll());
-  }, []);
+  }, [dispatch]);
   return (
     <Layout title="Redux Test">
       <div className="container">

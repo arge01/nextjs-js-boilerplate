@@ -23,7 +23,18 @@ module.exports = {
     ecmaVersion: 12,
     sourceType: 'module',
   },
-  plugins: ['react'],
+  globals: {
+    it: 'readonly',
+    expect: 'readonly',
+    test: 'readonly',
+  },
+  plugins: ['react', 'prettier', 'testing-library'],
+  overrides: [
+    {
+      files: ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[jt]s?(x)'],
+      extends: ['plugin:testing-library/react'],
+    },
+  ],
   rules: {
     'no-console': [
       'error',
@@ -31,9 +42,14 @@ module.exports = {
         allow: ['warn', 'error', 'info'],
       },
     ],
+    'react-hooks/exhaustive-deps': [
+      'warn',
+      {
+        additionalHooks: '(useMyCustomHook|useMyOtherCustomHook)',
+      },
+    ],
     'react-hooks/rules-of-hooks': 'error',
     'no-unused-vars': 'error',
-    'react-hooks/exhaustive-deps': 'warn',
     'react/prop-types': 'off',
     'react/react-in-jsx-scope': 'off',
     '@next/next/no-img-element': 'off',
