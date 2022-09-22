@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const rest_url = 'https://jsonplaceholder.typicode.com/kk';
+const rest_url = 'https://jsonplaceholder.typicode.com';
 
 const fetchConfig = (method, url, data, prep) => {
   const config = {
