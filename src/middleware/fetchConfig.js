@@ -1,6 +1,10 @@
 import axios from 'axios';
 
-const rest_url = `${process.env.NEXT_PUBLIC_HOST_NAME}`;
+const isDev = process.env.NODE_ENV === 'development';
+
+const rest_url = `${
+  isDev ? process.env.NEXT_PUBLIC_HOST_NAME : process.env.NEXT_PUBLIC_HOST_NAME
+}`;
 
 const fetchConfig = (method, url, data, prep) => {
   const config = {
