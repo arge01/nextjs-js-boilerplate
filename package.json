@@ -36,6 +36,16 @@
     "sass": "^1.54.4",
     "style.css": "^1.0.3"
   },
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "eslint --no-ignore --fix"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "devDependencies": {
     "eslint": "8.19.0",
     "eslint-config-next": "^12.2.0",
