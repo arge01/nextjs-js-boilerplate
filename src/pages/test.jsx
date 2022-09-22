@@ -13,7 +13,7 @@ function ReduxTest() {
     dispatch(findAll());
   }, []);
   return (
-    <Layout title="Placeholder">
+    <Layout title="Redux Test">
       <div className="container">
         <ul className="row json-placeholder">
           {jsonPlaceholder.loading && <li className="col-12">...loading</li>}
