@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "license": "MIT",
   "author": "Arif Gevenci <gevenci.arif@gmail.com>",
-  "homepage": "https://arifgevenci.com",
+  "homepage": "https://my-next-js-starter-arge01.vercel.app/",
   "scripts": {
     "build": "next build",
     "dev": "next dev",
@@ -84,6 +84,6 @@
     "url": "https://github.com/arge01/my-next-js-starter"
   },
   "bugs": {
-    "url": "https://github.com/arge01/my-next-js-starter"
+    "url": "https://github.com/arge01/my-next-js-starter/issues"
   }
 }
