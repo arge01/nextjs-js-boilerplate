@@ -35,7 +35,12 @@
     "react-icons": "^4.4.0",
     "rss": "^1.2.2",
     "sass": "^1.54.4",
-    "style.css": "^1.0.3"
+    "style.css": "^1.0.3",
+    "react-redux": "^7.2.6",
+    "react-toastify": "^9.0.8",
+    "redux": "^4.1.2",
+    "redux-devtools-extension": "^2.13.9",
+    "redux-thunk": "^2.4.1"
   },
   "lint-staged": {
     "src/**/*.{js,jsx}": [
