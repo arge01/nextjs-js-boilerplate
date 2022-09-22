@@ -35,6 +35,7 @@ module.exports = {
       extends: ['plugin:testing-library/react'],
     },
   ],
+  ignorePatterns: ['package.json'],
   rules: {
     'no-console': [
       'error',
