@@ -9,8 +9,6 @@ function ReduxTest() {
   const dispatch = useDispatch();
   const jsonPlaceholder = useSelector((state) => state.jsonPlaceholder);
 
-  const [data, setData] = useState(false);
-
   useEffect(() => {
     dispatch(findAll());
   }, []);
