@@ -15,16 +15,6 @@
     "start": "next start -p ${PORT:=3000}",
     "prepare": "husky install"
   },
-  "lint-staged": {
-    "*.{js,jsx}": [
-      "eslint --no-ignore --fix"
-    ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
   "dependencies": {
     "@apollo/client": "^3.6.9",
     "date-fns": "^2.29.2",

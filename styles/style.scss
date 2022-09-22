@@ -1,0 +1,9 @@
+@import "./mixin";
+
+html,
+body {
+  background: $background;
+  @include font_declare();
+  min-width: $breakpoint-xs-phone;
+  @include overflow(auto);
+}

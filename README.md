@@ -2,19 +2,20 @@
 
 ## Features
 
+- Husky
 - ESLint + Prettier
 - Jest + React Testing Library
-- Redux + Thunk
-- Winston Logger
-- Tailwind CSS
+- Redux + Redux Thunk
 - SASS
-- Husky
+- Bootstrap Css 4.4.1
+- Font Awesome Css 5.15.3
+- Google Fonts - Montserrat/Open-Sans
 
 ### Installation
 
 ```bash
 # clone repo
-https://github.com/arge01/...
+https://github.com/arge01
 
 # change into project directory
 cd my-project
