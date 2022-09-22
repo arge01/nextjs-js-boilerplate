@@ -37,14 +37,10 @@
     "style.css": "^1.0.3"
   },
   "lint-staged": {
-    "*.{js,jsx}": [
-      "eslint --no-ignore --fix"
+    "src/**/*.{js,jsx}": [
+      "eslint --fix", 
+      "git add"
     ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
   },
   "devDependencies": {
     "eslint": "8.19.0",
