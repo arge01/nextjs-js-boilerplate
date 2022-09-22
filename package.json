@@ -1,5 +1,6 @@
 {
   "name": "my-next-starter",
+  "private": true,
   "homepage": "https://arifgevenci.com",
   "version": "0.1.0",
   "license": "MIT",

@@ -1,6 +1,5 @@
 import Layout from 'component/Layout';
 import Link from 'next/link';
-import React from 'react';
 
 function Home() {
   return (

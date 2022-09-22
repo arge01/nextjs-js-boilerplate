@@ -6,7 +6,7 @@ import { default as NextHead } from 'next/head';
 function Head({ title }) {
   return (
     <NextHead>
-      <title>{`Arif GEVENCİ | ${title}`}</title>
+      <title>{`Arif GEVENCİ | ${title ? title : 'Home'}`}</title>
       <link rel="icon" href="/favicon.ico" />
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
