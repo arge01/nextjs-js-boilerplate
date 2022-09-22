@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import Layout from 'component/Layout';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { findAll } from 'services/json-placeholder';
@@ -8,6 +8,8 @@ import { findAll } from 'services/json-placeholder';
 function ReduxTest() {
   const dispatch = useDispatch();
   const jsonPlaceholder = useSelector((state) => state.jsonPlaceholder);
+
+  const [data, setData] = useState(false);
 
   useEffect(() => {
     dispatch(findAll());
