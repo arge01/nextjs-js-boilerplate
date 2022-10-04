@@ -12,7 +12,7 @@ function Home() {
         <span className="bg-black p-1 font-bold text-white">Arif GEVENCİ</span>
         <Link href="redux-test">
           <a className="flex w-full items-center justify-center p-1">
-            <p className="p-1">{`{redux} test`}</p>
+            <span className="p-1">{`{redux} test`}</span>
             <i className="fas fa-arrow-right"></i>{' '}
           </a>
         </Link>
