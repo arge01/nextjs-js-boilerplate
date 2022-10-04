@@ -1,13 +1,13 @@
 @import "./variables";
 
-@mixin overflow($y: hidden, $x: hidden) {
-  overflow: $x $y;
-}
-
-@mixin font_declare($default-font: $default-font, $default-font-size: $default-font-size, $font-weight: $font-weight) {
+@mixin font-declare($default-font: $default-font, $default-font-size: $default-font-size, $font-weight: $font-weight) {
   font-family: $default-font;
   font-size: $default-font-size;
   font-weight: $font-weight;
+}
+
+@mixin overflow($y: hidden, $x: hidden) {
+  overflow: $x $y;
 }
 
 @mixin box-shadow($left, $top, $radius, $color) {

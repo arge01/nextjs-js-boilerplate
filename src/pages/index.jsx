@@ -6,16 +6,14 @@ import Link from 'next/link';
 
 function Home() {
   return (
-    <Layout className="d-flex justify-content-center align-items-center min-vh-100">
-      <p className="row w-100 align-items-center justify-content-center p-3">
+    <Layout className="flex min-h-screen items-center justify-center">
+      <p className="p-3">
         Developer By{' '}
-        <span className="font-weight-bold text-light bg-dark p-1">
-          Arif GEVENCİ
-        </span>
+        <span className="bg-black p-1 font-bold text-white">Arif GEVENCİ</span>
         <Link href="redux-test">
-          <a className="d-flex w-100 font-weight-bold text-dark align-items-center justify-content-center p-3">
-            <i className="fas fa-arrow-right"></i> {`{redux} test`}{' '}
-            <i className="fas fa-arrow-left"></i>
+          <a className="flex w-full items-center justify-center p-1">
+            <p className="p-1">{`{redux} test`}</p>
+            <i className="fas fa-arrow-right"></i>{' '}
           </a>
         </Link>
       </p>
