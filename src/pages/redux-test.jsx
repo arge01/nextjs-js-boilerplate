@@ -14,8 +14,8 @@ function ReduxTest() {
   }, [dispatch]);
   return (
     <Layout title="Redux Test">
-      <div className="container">
-        <ul className="row json-placeholder">
+      <div className="flex">
+        <ul className="flex">
           {jsonPlaceholder.loading && <li className="col-12">...loading</li>}
           {jsonPlaceholder.isSuccess && (
             <>
