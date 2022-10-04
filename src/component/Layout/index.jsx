@@ -8,7 +8,13 @@ function Layout({ children, title, className }) {
     <>
       <Head title={title} />
       <Header />
-      <main className={`main ${className}`}>{children}</main>
+      <main
+        className={`${
+          typeof className !== 'undefined' ? 'main' + className : 'main'
+        }`}
+      >
+        {children}
+      </main>
       <Footer />
     </>
   );
