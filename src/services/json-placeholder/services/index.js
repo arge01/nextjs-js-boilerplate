@@ -5,7 +5,7 @@ const findAll = () => fetchConfig('get', 'todos');
 const post = () => {};
 const put = () => {};
 const patch = () => {};
-const deleted = () => {};
+const del = () => {};
 
 export const services = {
   find,
@@ -13,5 +13,5 @@ export const services = {
   post,
   put,
   patch,
-  deleted,
+  del,
 };
