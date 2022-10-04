@@ -10,7 +10,7 @@ function Layout({ children, title, className }) {
       <Header />
       <main
         className={`${
-          typeof className !== 'undefined' ? 'main' + className : 'main'
+          typeof className !== 'undefined' ? 'main ' + className : 'main'
         }`}
       >
         {children}
