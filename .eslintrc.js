@@ -60,5 +60,6 @@ module.exports = {
     'import/no-anonymous-default-export': 'off',
     'react/no-unescaped-entities': 'off',
     'react/no-children-prop': 'off',
+    'react/jsx-key': 'off',
   },
 };
