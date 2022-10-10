@@ -12,7 +12,7 @@ function MultipleTab({ children }) {
   const [menu, setMenu] = useState([]);
   const [active, setActive] = useState(null);
   const [initial, setInitial] = useState([]);
-  const [like, setLike] = useState(undefined);
+  const [like, setLike] = useState({});
 
   const handleData = (initailData, key) => {
     const value = initial.map((v) => {

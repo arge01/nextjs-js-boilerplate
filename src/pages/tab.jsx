@@ -23,23 +23,17 @@ function Tab() {
   ];
   return (
     <MultipleTab.Container menu={menu}>
-      {`<!-- A tab -->`}
       <MultipleTab.Page name="a-tab" initialData={{ data: 'a-tab-data' }}>
         <Page />
       </MultipleTab.Page>
-      {`<!-- A tab -->`}
 
-      {`<!-- B tab -->`}
       <MultipleTab.Page name="b-tab" initialData={{ data: 'a-tab-data' }}>
         <Page />
       </MultipleTab.Page>
-      {`<!-- B tab -->`}
 
-      {`<!-- C tab -->`}
       <MultipleTab.Page name="c-tab" initialData={{ data: 'a-tab-data' }}>
         <Page />
       </MultipleTab.Page>
-      {`<!-- C tab -->`}
     </MultipleTab.Container>
   );
 }
