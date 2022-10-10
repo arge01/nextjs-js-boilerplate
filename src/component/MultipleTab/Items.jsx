@@ -7,8 +7,16 @@ import { useRouter } from 'next/router';
 function Items({ children, params }) {
   const router = useRouter();
 
-  const { setActive, active, setPages, pages, setLike, like, menu } =
-    useContext(MultipleTab.Context);
+  const {
+    setActive,
+    active,
+    setPages,
+    pages,
+    setLike,
+    like,
+    menu,
+    setInitial,
+  } = useContext(MultipleTab.Context);
 
   useEffect(() => {
     if (!pages.length && params) {
@@ -27,20 +35,23 @@ function Items({ children, params }) {
         setPages([...page]);
         _ = page
           .filter((f) => f?.query === params?.active)
-          .find((_f, k) => k === params?.like - 1);
+          .find((_f, k) => k === Number(params?.like) - 1);
+        setInitial([...page]);
       } else {
         const query = params?.page;
         _ = {
           id: menu.find((f) => f?.query === query)?.id,
           name: menu.find((f) => f?.query === query)?.name,
+          like: params?.like,
           query,
           key: 0,
         };
         if (_?.id) {
           setPages([_]);
+          setInitial([_]);
         }
       }
-      setLike({ ..._, like: params?.like });
+      setLike({ ..._, like: Number(params?.like) });
       setActive(params?.active);
     }
   }, [params]);
