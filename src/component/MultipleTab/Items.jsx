@@ -1,14 +1,49 @@
-import React, { useContext } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useContext, useEffect } from 'react';
 
 import MultipleTab from 'component/MultipleTab';
 import { useRouter } from 'next/router';
 
-function Items({ children }) {
+function Items({ children, params }) {
   const router = useRouter();
 
-  const { setActive, active, setPages, pages, setLike, like } = useContext(
-    MultipleTab.Context
-  );
+  const { setActive, active, setPages, pages, setLike, like, menu } =
+    useContext(MultipleTab.Context);
+
+  useEffect(() => {
+    if (!pages.length && params) {
+      let page = [];
+      let _ = {};
+      if (Array.isArray(params?.page)) {
+        page = params?.page?.map((query, key) => {
+          return {
+            id: menu.find((f) => f?.query === query)?.id,
+            name: menu.find((f) => f?.query === query)?.name,
+            query,
+            key,
+          };
+        });
+
+        setPages([...page]);
+        _ = page
+          .filter((f) => f?.query === params?.active)
+          .find((_f, k) => k === params?.like - 1);
+      } else {
+        const query = params?.page;
+        _ = {
+          id: menu.find((f) => f?.query === query)?.id,
+          name: menu.find((f) => f?.query === query)?.name,
+          query,
+          key: 0,
+        };
+        if (_?.id) {
+          setPages([_]);
+        }
+      }
+      setLike({ ..._, like: params?.like });
+      setActive(params?.active);
+    }
+  }, [params]);
 
   const del = (v) => {
     setPages([...pages.filter((f) => f !== v)]);
