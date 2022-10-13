@@ -7,8 +7,16 @@ import { useRouter } from 'next/router';
 function Items({ children, params }) {
   const router = useRouter();
 
-  const { setActive, active, setPages, pages, setLike, menu, setInitial } =
-    useContext(MultipleTab.Context);
+  const {
+    setActive,
+    active,
+    setPages,
+    pages,
+    setLike,
+    menu,
+    setInitial,
+    like,
+  } = useContext(MultipleTab.Context);
 
   useEffect(() => {
     if (!pages.length && params) {
@@ -66,32 +74,53 @@ function Items({ children, params }) {
     }
   }, [params]);
 
-  const del = (v) => {
+  const del = (v, key) => {
     const d = pages[pages.find((f) => f === v)?.key];
     d.passive = true;
     setPages(pages);
 
-    const f = pages.filter((f) => !f?.passive && f !== v);
-    let _ = {};
+    if (
+      v?.query === params?.active &&
+      Number(v?.like) === Number(params?.like)
+    ) {
+      const f = pages.filter((f) => !f?.passive && f !== v);
+      let _ = {};
 
-    if (Number(d?.key) === Number(f.length)) {
-      _ = f[f.length - 1] || {};
+      if (Number(key) < Number(f.length)) {
+        if (f?.length - v?.key > 1) {
+          _ = f[f?.length - v?.key] || {};
+        } else {
+          _ = f[0] || {};
+        }
+      } else {
+        if (f.length - 1 > 0) {
+          _ = f[f.length - 1] || {};
+        } else {
+          _ = f[0] || {};
+        }
+      }
+      setLike(_);
+      setActive(_?.query);
+
+      if (_?.key >= 0) {
+        router.push({
+          query: {
+            page: pages.filter((f) => !f?.passive).map((v) => v?.query),
+            active: `${_.query}`,
+            like: `${_.like}`,
+          },
+        });
+      } else {
+        router.push({ query: undefined });
+      }
     } else {
-      _ = f[f?.length - v?.key] || {};
-    }
-    setLike(_);
-    setActive(_?.query);
-
-    if (_?.key) {
       router.push({
         query: {
           page: pages.filter((f) => !f?.passive).map((v) => v?.query),
-          active: `${_.query}`,
-          like: `${_.like}`,
+          active: `${like.query}`,
+          like: `${like.like}`,
         },
       });
-    } else {
-      router.push({ query: undefined });
     }
   };
 
@@ -110,10 +139,11 @@ function Items({ children, params }) {
   return (
     <section className="menu-items">
       <ul>
-        {pages.map((v, k) => {
-          return (
-            <React.Fragment key={k}>
-              {!v?.passive && (
+        {pages
+          .filter((f) => !f?.passive)
+          .map((v, k) => {
+            return (
+              <React.Fragment key={k}>
                 <li
                   className={`${
                     v?.query === params?.active &&
@@ -122,17 +152,16 @@ function Items({ children, params }) {
                       : ''
                   }`}
                 >
-                  <span onClick={() => del(v)} className="delete">
+                  <span onClick={() => del(v, k)} className="delete">
                     <i className="fas fa-times"></i>
                   </span>
                   <button onClick={() => onChangeActivePage({ ...v })}>
                     {v?.name}
                   </button>
                 </li>
-              )}
-            </React.Fragment>
-          );
-        })}
+              </React.Fragment>
+            );
+          })}
       </ul>
       <section className="items">
         {children?.find((f) => f?.props?.name === active)}
