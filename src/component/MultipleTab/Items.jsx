@@ -47,7 +47,7 @@ function Items({ children, params }) {
           }
         }
         for (index; index < count; index++) {
-          console.log(index);
+          const dev = false;
           const query = menu.find(
             (f) => f?.query === (params?.page?.[index] || params?.active)
           );
