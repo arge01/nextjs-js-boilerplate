@@ -1,6 +1,6 @@
 eslint config
   npx husky-init && yarn
-  npx husky add .husky/pre-commit "npm test"
+  npx husky add .husky/pre-commit "yarn format"
 
   * package.josn
     "format": "yarn lint --fix",
