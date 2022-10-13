@@ -95,9 +95,9 @@ function Items({ children, params }) {
     }
   };
 
-  const onChangeActivePage = async (v) => {
-    await setLike(v);
-    await setActive(v?.query);
+  const onChangeActivePage = (v) => {
+    setLike(v);
+    setActive(v?.query);
 
     router.push({
       query: {
