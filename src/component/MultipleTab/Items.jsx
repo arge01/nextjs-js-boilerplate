@@ -21,9 +21,35 @@ function Items({ children, params }) {
   useEffect(() => {
     if (!pages.length && params) {
       let _ = {};
+      let index = 0;
+      let count = params?.page?.length;
+      let filter_count = params?.page?.filter(
+        (f) => f === params?.active
+      )?.length;
       if (Array.isArray(params?.page)) {
-        for (let index = 0; index < params?.page?.length; index++) {
-          const query = menu.find((f) => f?.query === params?.page?.[index]);
+        if (filter_count < Number(params?.like)) {
+          for (let i = 0; i < Number(params?.like) - filter_count; i++) {
+            const query = params?.active;
+            pages[index] = {
+              id: menu.find((f) => f?.query === query)?.id,
+              name: menu.find((f) => f?.query === query)?.name,
+              like:
+                pages?.filter((f) => f?.query === query?.query)?.length + 1 ||
+                1,
+              query,
+              key: index,
+              passive: true,
+            };
+            if (params?.page[index] === params?.active) {
+              index++;
+              count++;
+            }
+          }
+        }
+        for (index; index < count; index++) {
+          const query = menu.find(
+            (f) => f?.query === (params?.page?.[index] || params?.active)
+          );
           pages[index] = {
             id: query?.id,
             name: query?.name,
@@ -32,9 +58,9 @@ function Items({ children, params }) {
             query: query?.query,
             key: index,
           };
-          setPages([...pages]);
-          setInitial([...pages]);
         }
+        setPages([...pages]);
+        setInitial([...pages]);
       } else {
         const query = params?.page;
         for (let index = 0; index < params?.like; index++) {
@@ -57,20 +83,19 @@ function Items({ children, params }) {
             };
           }
         }
-        _ = {
-          id: menu.find((f) => f?.query === query)?.id,
-          name: menu.find((f) => f?.query === query)?.name,
-          like: params?.like,
-          query,
-          key: 0,
-        };
-        if (_?.id) {
-          setPages([...pages]);
-          setInitial([...pages]);
-        }
+        setPages([...pages]);
+        setInitial([...pages]);
       }
-      setLike(_);
-      setActive(params?.active);
+      _ =
+        pages?.find(
+          (f) =>
+            f?.query === params?.active &&
+            Number(f?.like) === Number(params?.like)
+        ) || {};
+      if (!_?.passive && _?.query && _?.like) {
+        setLike(_);
+        setActive(params?.active);
+      }
     }
   }, [params]);
 
