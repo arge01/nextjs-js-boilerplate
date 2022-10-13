@@ -45,17 +45,8 @@
     "style.css": "^1.0.3"
   },
   "lint-staged": {
-    "src/*.{js,jsx}": [
-      "eslint",
-      "prettier --write"
-    ],
-    "src/**.{js,jsx}": [
-      "eslint",
-      "prettier --write"
-    ],
-    "src/**/*.{js,jsx}": [
-      "eslint",
-      "prettier --write"
+    "*.{js,jsx}": [
+      "eslint --no-ignore --fix"
     ]
   },
   "husky": {
