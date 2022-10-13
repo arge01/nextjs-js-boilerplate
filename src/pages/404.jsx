@@ -5,6 +5,7 @@ import Layout from 'component/Layout';
 import Link from 'next/link';
 
 function Custom404() {
+  const deneme=false;
   return (
     <Layout className="d-flex justify-content-center align-items-center min-vh-100">
       <p className="row w-100 align-items-center justify-content-center p-3">
