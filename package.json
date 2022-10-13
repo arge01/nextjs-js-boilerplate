@@ -45,9 +45,7 @@
     "style.css": "^1.0.3"
   },
   "lint-staged": {
-    "*.{js,jsx}": [
-      "eslint --no-ignore --fix"
-    ]
+    "*.{js,jsx}": "eslint --fix"
   },
   "husky": {
     "hooks": {
