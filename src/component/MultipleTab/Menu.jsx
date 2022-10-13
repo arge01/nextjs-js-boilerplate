@@ -43,7 +43,7 @@ function Menu({ tabs = [] }) {
 
     router.push({
       query: {
-        page: _.map((v) => v?.query),
+        page: _?.filter((f) => !f?.passive).map((v) => v?.query),
         active: `${name}`,
         like: `${last}`,
       },
