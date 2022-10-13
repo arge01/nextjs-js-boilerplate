@@ -7,38 +7,48 @@ import { useRouter } from 'next/router';
 function Items({ children, params }) {
   const router = useRouter();
 
-  const {
-    setActive,
-    active,
-    setPages,
-    pages,
-    setLike,
-    like,
-    menu,
-    setInitial,
-  } = useContext(MultipleTab.Context);
+  const { setActive, active, setPages, pages, setLike, menu, setInitial } =
+    useContext(MultipleTab.Context);
 
   useEffect(() => {
     if (!pages.length && params) {
-      let page = [];
       let _ = {};
       if (Array.isArray(params?.page)) {
-        page = params?.page?.map((query, key) => {
-          return {
-            id: menu.find((f) => f?.query === query)?.id,
-            name: menu.find((f) => f?.query === query)?.name,
-            query,
-            key,
+        for (let index = 0; index < params?.page?.length; index++) {
+          const query = menu.find((f) => f?.query === params?.page?.[index]);
+          pages[index] = {
+            id: query?.id,
+            name: query?.name,
+            like:
+              pages?.filter((f) => f?.query === query?.query)?.length + 1 || 1,
+            query: query?.query,
+            key: index,
           };
-        });
-
-        setPages([...page]);
-        _ = page
-          .filter((f) => f?.query === params?.active)
-          .find((_f, k) => k === Number(params?.like) - 1);
-        setInitial([...page]);
+          setPages([...pages]);
+          setInitial([...pages]);
+        }
       } else {
         const query = params?.page;
+        for (let index = 0; index < params?.like; index++) {
+          if (Number(index) + 1 === Number(params?.like)) {
+            pages[index] = {
+              id: menu.find((f) => f?.query === query)?.id,
+              name: menu.find((f) => f?.query === query)?.name,
+              like: index + 1,
+              query,
+              key: index,
+            };
+          } else {
+            pages[index] = {
+              id: menu.find((f) => f?.query === query)?.id,
+              name: menu.find((f) => f?.query === query)?.name,
+              like: index + 1,
+              query,
+              key: index,
+              passive: true,
+            };
+          }
+        }
         _ = {
           id: menu.find((f) => f?.query === query)?.id,
           name: menu.find((f) => f?.query === query)?.name,
@@ -47,41 +57,53 @@ function Items({ children, params }) {
           key: 0,
         };
         if (_?.id) {
-          setPages([_]);
-          setInitial([_]);
+          setPages([...pages]);
+          setInitial([...pages]);
         }
       }
-      setLike({ ..._, like: Number(params?.like) });
+      setLike(_);
       setActive(params?.active);
     }
   }, [params]);
 
   const del = (v) => {
-    setPages([...pages.filter((f) => f !== v)]);
+    const d = pages[pages.find((f) => f === v)?.key];
+    d.passive = true;
+    setPages(pages);
+
+    const f = pages.filter((f) => !f?.passive && f !== v);
+    let _ = {};
+
+    if (Number(d?.key) === Number(f.length)) {
+      _ = f[f.length - 1] || {};
+    } else {
+      _ = f[f?.length - v?.key] || {};
+    }
+    setLike(_);
+    setActive(_?.query);
+
+    if (_?.key) {
+      router.push({
+        query: {
+          page: pages.filter((f) => !f?.passive).map((v) => v?.query),
+          active: `${_.query}`,
+          like: `${_.like}`,
+        },
+      });
+    } else {
+      router.push({ query: undefined });
+    }
   };
 
-  const onChangeActivePage = (v) => {
-    let i = 0;
-    const _ = pages.reduce((acc, item, key) => {
-      if (item?.query === v?.query) {
-        i++;
-        item.like = i;
-        item.key = key;
-        item.initailData = {};
-        acc.push(item);
-      } else {
-        acc.push(item);
-      }
-      return acc;
-    }, []);
+  const onChangeActivePage = async (v) => {
+    await setLike(v);
+    await setActive(v?.query);
 
-    setLike(_?.[v?.index]);
-    setActive(v?.query);
     router.push({
       query: {
-        page: pages.map((v) => v?.query),
+        page: pages.filter((f) => !f?.passive).map((v) => v?.query),
         active: `${v?.query}`,
-        like: `${_?.[v?.index]?.like}`,
+        like: `${v?.like}`,
       },
     });
   };
@@ -90,14 +112,25 @@ function Items({ children, params }) {
       <ul>
         {pages.map((v, k) => {
           return (
-            <li className={`${like?.key === k ? 'active' : ''}`} key={k}>
-              <span onClick={() => del(v)} className="delete">
-                <i className="fas fa-times"></i>
-              </span>
-              <button onClick={() => onChangeActivePage({ index: k, ...v })}>
-                {v?.name}
-              </button>
-            </li>
+            <React.Fragment key={k}>
+              {!v?.passive && (
+                <li
+                  className={`${
+                    v?.query === params?.active &&
+                    Number(v?.like) === Number(params?.like)
+                      ? 'active'
+                      : ''
+                  }`}
+                >
+                  <span onClick={() => del(v)} className="delete">
+                    <i className="fas fa-times"></i>
+                  </span>
+                  <button onClick={() => onChangeActivePage({ ...v })}>
+                    {v?.name}
+                  </button>
+                </li>
+              )}
+            </React.Fragment>
           );
         })}
       </ul>

@@ -7,35 +7,39 @@ import MultipleTab from 'component/MultipleTab';
 function Menu({ tabs = [] }) {
   const router = useRouter();
 
-  const {
-    pages,
-    setPages,
-    setMenu,
-    menu,
-    setActive,
-    setLike,
-    initial,
-    setInitial,
-  } = useContext(MultipleTab.Context);
+  const { pages, setPages, setMenu, menu, setActive, setLike, setInitial } =
+    useContext(MultipleTab.Context);
 
   useEffect(() => {
     setMenu(tabs);
   }, [setMenu, tabs]);
 
+  const refArr = (arr, like, query, key) => {
+    const tabs = arr.filter((f) => f.query === query);
+    const tab = tabs.find((_, i) => i === like - 1);
+
+    tab.like = like;
+    tab.key = key;
+
+    return arr;
+  };
+
   const onChangeQuery = (e) => {
     const name = e.target.name;
     const _ = [...pages, tabs.find((f) => f.query === name)];
     const last = _.filter((f) => f.query === name)?.length || 0;
-    const like = {
+    const _like = {
       ...tabs.find((f) => f.query === name),
-      key: pages.length,
       like: last,
+      key: pages.length,
     };
 
-    setInitial([...initial, like]);
     setActive(name);
-    setPages(_);
-    setLike(like);
+    setLike(_like);
+
+    const arr = refArr(_, _like?.like, e.target.name, pages.length);
+    setPages(arr);
+    setInitial(arr);
 
     router.push({
       query: {

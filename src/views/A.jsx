@@ -3,7 +3,7 @@ import React, { useContext } from 'react';
 import MultipleTab from 'component/MultipleTab';
 
 function Page() {
-  const { handleData, like, initial, setMenu, menu } =
+  const { handleData, like, initial, setMenu, menu, propToState } =
     useContext(MultipleTab.Context) || {};
 
   const onChange = (e) => {
@@ -11,7 +11,7 @@ function Page() {
       {
         [e.target.name]: e.target.value,
       },
-      like?.key
+      like
     );
   };
 
@@ -39,15 +39,20 @@ function Page() {
       <div>
         <b>Count: </b> {initial?.length}
       </div>
-      <div>
-        <b>Input</b>{' '}
-        <input
-          type="text"
-          name="my-input"
-          value={initial[like?.key]?.initailData?.['my-input'] || 'My input'}
-          onChange={onChange}
-        />
-      </div>
+      {propToState && (
+        <div>
+          <b>Input</b>{' '}
+          <input
+            type="text"
+            name="my-input"
+            value={
+              initial[like?.key]?.initailData?.['my-input'] ||
+              propToState?.['my-input']
+            }
+            onChange={onChange}
+          />
+        </div>
+      )}
       <div>
         <b>Create d tab: </b> <button onClick={create}>Create</button>
       </div>
