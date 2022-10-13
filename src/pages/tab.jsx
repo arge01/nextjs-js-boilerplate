@@ -23,15 +23,24 @@ function Tab() {
   ];
   return (
     <MultipleTab.Container menu={menu}>
-      <MultipleTab.Page name="a-tab" initialData={{ data: 'a-tab-data' }}>
+      <MultipleTab.Page
+        name="a-tab"
+        initialData={{ data: { 'my-input': 'My Input / A' } }}
+      >
         <Page />
       </MultipleTab.Page>
 
-      <MultipleTab.Page name="b-tab" initialData={{ data: 'a-tab-data' }}>
+      <MultipleTab.Page
+        name="b-tab"
+        initialData={{ data: { 'my-input': 'My Input / B' } }}
+      >
         <Page />
       </MultipleTab.Page>
 
-      <MultipleTab.Page name="c-tab" initialData={{ data: 'a-tab-data' }}>
+      <MultipleTab.Page
+        name="c-tab"
+        initialData={{ data: { 'my-input': 'My Input / C' } }}
+      >
         <Page />
       </MultipleTab.Page>
     </MultipleTab.Container>
