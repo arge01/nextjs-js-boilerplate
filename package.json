@@ -44,16 +44,6 @@
     "sass": "^1.54.4",
     "style.css": "^1.0.3"
   },
-  "lint-staged": {
-    "*.{js,jsx}": [
-      "eslint --no-ignore --fix"
-    ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^13.4.0",
