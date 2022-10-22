@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Layout from '../component/Layout';
+import Layout from 'component';
 
 import Link from 'next/link';
 
