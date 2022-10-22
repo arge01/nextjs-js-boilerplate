@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-import Layout from 'component';
+import { Layout } from 'component';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { findAll } from 'services/json-placeholder';
