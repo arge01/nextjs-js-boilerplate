@@ -23,10 +23,11 @@ function Items({ children, params }) {
       let _ = {};
       let index = 0;
       let count = params?.page?.length;
-      let filter_count = params?.page?.filter(
-        (f) => f === params?.active
-      )?.length;
       if (Array.isArray(params?.page)) {
+        let filter_count = params?.page?.filter(
+          (f) => f === params?.active
+        )?.length;
+
         if (filter_count < Number(params?.like)) {
           for (let i = 0; i < Number(params?.like) - filter_count; i++) {
             const query = params?.active;
