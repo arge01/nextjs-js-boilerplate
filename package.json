@@ -14,7 +14,7 @@
     "lint": "eslint --ext .js,.jsx ./",
     "lint:no-path": "eslint",
     "start": "next start -p ${PORT:=3000}",
-    "test-run": "jest",
+    "test:run": "jest",
     "test:ci": "jest --ci",
     "prepare": "husky install"
   },
