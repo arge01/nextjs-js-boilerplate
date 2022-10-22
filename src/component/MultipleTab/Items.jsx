@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useContext, useEffect } from 'react';
 
-import { MultipleTab } from 'component';
+import MultipleTab from 'component/MultipleTab';
 import { useRouter } from 'next/router';
 
 function Items({ children, params }) {

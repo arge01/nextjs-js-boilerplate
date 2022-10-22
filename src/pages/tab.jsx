@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { MultipleTab } from 'component';
+import MultipleTab from 'component/MultipleTab';
 import Page from 'views/A';
 
 function Tab() {

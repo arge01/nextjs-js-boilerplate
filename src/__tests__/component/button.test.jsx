@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
 
-import Button from '../../component/Button';
+import Button from '@component/Button';
 
 it('renders homepage unchanged', () => {
   const { container } = render(

@@ -17,8 +17,11 @@ module.exports = {
     '^.+\\.(jpg|jpeg|png|gif|webp|avif|svg)$': `<rootDir>/__mocks__/fileMock.js`,
 
     // Handle module aliases
-    '^@/src/components/(.*)$': '<rootDir>/src/components/$1',
-    '^@/src/pages/(.*)$': '<rootDir>/src/pages/$1',
+    '^@component/(.*)$': '<rootDir>/src/component/$1',
+    '^@pages/(.*)$': '<rootDir>/src/pages/$1',
+
+    '^component/(.*)$': '<rootDir>/src/component/$1',
+    '^pages/(.*)$': '<rootDir>/src/pages/$1',
   },
   // A list of paths to modules that run some code to configure or set up the testing framework before each test file in the suite is executed.
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],

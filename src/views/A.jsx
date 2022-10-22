@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 
-import { MultipleTab } from 'component';
+import MultipleTab from 'component/MultipleTab';
 
 function Page() {
   const { handleData, like, initial, setMenu, menu, propToState } =

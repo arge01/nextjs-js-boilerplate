@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react';
 
 import { useRouter } from 'next/router';
 
-import { MultipleTab } from 'component';
+import MultipleTab from 'component/MultipleTab';
 
 function Menu({ tabs = [] }) {
   const router = useRouter();

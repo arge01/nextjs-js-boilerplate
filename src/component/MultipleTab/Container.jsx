@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { MultipleTab } from 'component';
-import { useQueryRouter } from 'hooks';
+import MultipleTab from 'component/MultipleTab';
+import { useQueryRouter } from 'hooks/useQueryRouter';
 
 function Container({ children, menu }) {
   const [params, setParams] = useQueryRouter();
