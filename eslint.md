@@ -1,3 +1,6 @@
+lint staged config
+  npx mrm lint-staged
+
 eslint config
   npx husky-init && yarn
   npx husky add .husky/pre-commit "yarn format"

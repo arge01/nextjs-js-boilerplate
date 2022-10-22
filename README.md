@@ -23,6 +23,8 @@ cd my-project
 
 # install dependencies
 yarn install
+yarn format
+git add .
 ```
 
 ### Development
