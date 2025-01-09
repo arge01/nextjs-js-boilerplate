@@ -3,10 +3,13 @@ module.exports = {
     './src/pages/**/*.{js,ts,jsx,tsx}',
     './src/components/**/*.{js,ts,jsx,tsx}',
   ],
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
         white: '#fff',
+        light: '#fff',
+        dark: '#000',
         blue: '#1fb6ff',
         purple: '#7e5bef',
         pink: '#ff49db',
@@ -30,6 +33,16 @@ module.exports = {
         open: ['Open Sans', 'sans-serif'],
       },
     },
+  },
+  variants: {
+    boxShadow: [
+      'responsive',
+      'group-hover',
+      'focus-within',
+      'hover',
+      'focus',
+      'dark',
+    ],
   },
   plugins: [],
 };

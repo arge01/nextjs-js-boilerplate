@@ -1,0 +1,53 @@
+// html {
+// 	/* our light-mode / default theme variable values */
+//   --primaryTextColor: black;
+//   --primaryBackgroundColor: white;
+// 	--headingTextColor: #14ad8c;
+// 	--secondaryBackgroundColor: #dcf7f4;
+// }
+
+// @media (prefers-color-scheme: dark) {
+//   html {
+// 		/* here's where we change the variable values for dark mode */
+//     --primaryTextColor: white;
+//     --primaryBackgroundColor: black;
+// 		--headingTextColor: #14ad8c;
+// 		--secondaryBackgroundColor: #130d21;
+//   }
+// }
+
+// body {
+// 	background: var(--secondaryBackgroundColor);
+// }
+
+// .TextCard {
+// 	background: var(--primaryBackgroundColor);
+
+//   padding: 30px 25px;
+//   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+//   border-radius: 8px;
+// 	width: 340px;
+// }
+
+// .TextCard__Title {
+// 	color: var(--headingTextColor);
+
+//   margin-top: 0;
+// }
+
+// .TextCard__Body {
+// 	color: var(--primaryTextColor);
+
+//   line-height: 1.4;
+// 	margin-bottom: 0;
+// }
+
+// /* un-important / irrelevant set-up styles */
+
+// body {
+//   padding-top: 40px;
+//   font-family: sans-serif;
+//   font-size: 18px;
+//   display: flex;
+//   justify-content: center;
+// }
